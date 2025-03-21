@@ -5,7 +5,6 @@ class Solution {
             if(temp<=i && nums[temp] == 0 && nums[i] == 0){
                 continue;
             }
-
             else{
                 int temp1 = nums[i];
                 nums[i] = nums[temp];
