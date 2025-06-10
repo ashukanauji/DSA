@@ -14,11 +14,10 @@ class Solution {
 
             int freq = element.getValue();
 
-            if(freq % 2 == 0 && freq < minEven)
-                minEven = freq;
-            
-            else if(freq%2 != 0 && freq > maxOdd)
-                maxOdd = freq;
+            if(freq%2 == 0)
+                minEven = Math.min(freq, minEven);
+            else
+                maxOdd = Math.max(freq, maxOdd);
         }
         return maxOdd - minEven;
     }
