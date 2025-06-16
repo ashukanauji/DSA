@@ -9,10 +9,11 @@ class Solution {
             {
                 diff=Math.max(diff,nums[i]-mini);
             }
-            if(nums[i]<mini)
-            {
+            //(nums[i]<mini)
+            // {
+            else
                 mini=nums[i];
-            }
+            // }
             i++;
             System.out.println(diff);
         }
