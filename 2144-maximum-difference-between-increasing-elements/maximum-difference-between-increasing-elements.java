@@ -15,7 +15,7 @@ class Solution {
                 mini=nums[i];
             // }
             i++;
-            System.out.println(diff);
+            // System.out.println(diff);
         }
         return diff;
         
