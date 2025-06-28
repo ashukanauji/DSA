@@ -1,18 +1,33 @@
-import java.util.*;
-
 class Solution {
     public int[] maxSubsequence(int[] nums, int k) {
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(a[0], b[0]));
-        for (int i = 0; i < nums.length; i++) {
-            pq.offer(new int[]{nums[i], i});
-            if (pq.size() > k) pq.poll();
+        int n = nums.length;
+        int[] sorted = Arrays.copyOf(nums, n);
+
+        Arrays.sort(sorted);
+
+        int threshold = sorted[n - k];
+        int thresholdCnt = 0;
+        for (int i = n - k; i < n; i++) {
+            if (sorted[i] == threshold) {
+                thresholdCnt++;
+            }
         }
-        int[][] indices = pq.toArray(new int[0][0]);
-        Arrays.sort(indices, Comparator.comparingInt(a -> a[1]));
-        int[] result = new int[k];
-        for (int i = 0; i < k; i++) {
-            result[i] = nums[indices[i][1]];
+
+        int[] ans = new int[k];
+
+        int p = 0;
+        for (int num : nums) {
+            if (num > threshold) {
+                ans[p++] = num;
+            } else if (num == threshold && thresholdCnt > 0) {
+                ans[p++] = num;
+                thresholdCnt--;
+            }
+            if (p== k) {
+                break;
+            }
         }
-        return result;
+
+        return ans;
     }
 }
