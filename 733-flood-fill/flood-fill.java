@@ -1,5 +1,5 @@
 class Solution {
-    public int[][] dfs(int sr, int sc, int color, int[][] image, int[][] vis, int toColor){
+    public void dfs(int sr, int sc, int color, int[][] image, int[][] vis, int toColor){
         int m = image.length;
         int n = image[0].length;
         int[] dRow = {0, -1, 0, 1};
@@ -15,7 +15,7 @@ class Solution {
             }
         }
 
-        return vis;
+        return;
     }
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {
         int m = image.length;
@@ -30,7 +30,7 @@ class Solution {
             }
         }
         
-        vis = dfs(sr, sc, color, image, vis, toColor);
+        dfs(sr, sc, color, image, vis, toColor);
   
         return vis;
         
