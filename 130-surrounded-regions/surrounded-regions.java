@@ -23,8 +23,6 @@ class Solution {
 
         boolean[][] vis = new boolean[m][n];
 
-        // char[][] ans = new char[m][n];
-
         // Check boundary rows
         for(int j = 0; j < n; j++) {
             if(board[0][j] == 'O' && !vis[0][j])
