@@ -14,33 +14,22 @@
  * }
  */
 class Solution {
-    private String serialize(TreeNode root){
-        if(root == null)
-            return "";
-        StringBuilder sb = new StringBuilder();
-
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root);
-
-        while(!q.isEmpty()){
-            TreeNode node = q.poll();
-
-            if(node == null){
-                sb.append("null").append(",");
-                continue;
-            }
-            sb.append(node.val);
-            q.offer(node.left);
-            q.offer(node.right);
-        }
-        return sb.toString();
-    }
-
-
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        String str1 = serialize(p);
-        String str2 = serialize(q);
+        TreeNode node1 = p;
+        TreeNode node2 = q;
 
-        return str1.equals(str2);
+
+        if(node1 == null || node2 == null || (node1.val != node2.val)){
+            if(node1 == null && node2 == null)
+                return true;
+            return false;
+        }
+            // return false;
+
+        boolean leftResult = isSameTree(p.left, q.left);
+        boolean rightResult = isSameTree(p.right, q.right);
+        
+
+        return leftResult && rightResult;        
     }
 }
