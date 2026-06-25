@@ -24,17 +24,37 @@ class Solution {
 
         // return ans;
 
+        // List<Integer> ans = new ArrayList<>();
+        // if(root == null)
+        //     return ans;
+        // preorder(root, ans);
+        // return ans;
+
         List<Integer> ans = new ArrayList<>();
+        
         if(root == null)
             return ans;
-        preorder(root, ans);
+
+        Stack<TreeNode> st = new Stack<>();
+        
+        st.push(root);
+        while(!st.isEmpty()){
+            TreeNode node = st.pop();
+            ans.add(node.val);
+            if(node.right != null)
+                st.push(node.right);
+            if(node.left != null)
+                st.push(node.left);
+        }
+
         return ans;
+
     }
-    private void preorder(TreeNode root, List<Integer> ans){
-        if(root == null)
-            return;
-        ans.add(root.val);
-        preorder(root.left, ans);
-        preorder(root.right, ans);
-    }
+    // private void preorder(TreeNode root, List<Integer> ans){
+    //     if(root == null)
+    //         return;
+    //     ans.add(root.val);
+    //     preorder(root.left, ans);
+    //     preorder(root.right, ans);
+    // }
 }
