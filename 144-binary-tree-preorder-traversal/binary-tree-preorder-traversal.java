@@ -30,8 +30,8 @@ class Solution {
         // preorder(root, ans);
         // return ans;
 
-        List<Integer> ans = new ArrayList<>();
-        
+        List<Integer> ans = new ArrayList<>(); // (root -> left -> right)
+
         if(root == null)
             return ans;
 
@@ -41,7 +41,7 @@ class Solution {
         while(!st.isEmpty()){
             TreeNode node = st.pop();
             ans.add(node.val);
-            if(node.right != null)
+            if(node.right != null)   //the logic needs to be reversed because used an Stack which is LIFO.
                 st.push(node.right);
             if(node.left != null)
                 st.push(node.left);
